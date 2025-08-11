@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
-import { forgotPassword } from '../hooks/auth';
+import  { useState } from 'react';
 import woman from '../assets/businesswoman.jpg';
 import logo from '../assets/Group.svg';
+import Authentication from '../hooks/auth';
+
 
 const ForgotPasswordPage = () => {
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const { forgotPassword } = Authentication();
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -1,31 +1,51 @@
-import React, { useState } from 'react';
-import { resetPassword } from '../hooks/auth';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 import woman from '../assets/businesswoman.jpg';
 import logo from '../assets/Group.svg';
+import Authentication from '../hooks/auth';
+import { toast } from 'react-hot-toast';
+
+const schema = yup.object().shape({
+  password: yup
+    .string()
+    .required('Password is required')
+    .min(8, 'Password must be at least 8 characters'),
+  confirmation_password: yup
+    .string()
+    .oneOf([yup.ref('password'), null], 'Passwords must match')
+    .required('Please confirm your password'),
+});
 
 const ResetPasswordPage = () => {
-  const [form, setForm] = useState({
-    password: '',
-    confirmation_password: '',
+  const { resetPassword } = Authentication();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm({
+    resolver: yupResolver(schema),
+    defaultValues: {
+      password: '',
+      confirmation_password: '',
+    },
   });
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError('');
-    setSuccess('');
-    try {
-      await resetPassword(form);
-      setSuccess('Password reset successful');
-    } catch (err) {
-      setError(err?.response?.data?.message || 'Password reset failed');
-    }
-  };
+  const onSubmit = async (data) => {
+   toast.promise(
+     resetPassword(data),
+     {
+       loading: 'Resetting password...',
+       success: 'Password reset successful',
+       error: (err) =>
+         err?.response?.data?.message ||
+         err?.message ||
+         'Password reset failed',
+     }
+   );
+  }
 
   return (
     <div
@@ -51,36 +71,35 @@ const ResetPasswordPage = () => {
               Enter your new password
             </p>
           </div>
-          <form className="space-y-4" onSubmit={handleSubmit}>
+          <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
             <input
               name="password"
               type="password"
               placeholder="New Password"
-              value={form.password}
-              onChange={handleChange}
+              {...register('password')}
               className="w-full px-5 py-2.5 border border-[#D3CDCD] bg-white rounded-lg"
               required
             />
+            {errors.password && (
+              <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>
+            )}
             <input
               name="confirmation_password"
               type="password"
               placeholder="Confirm Password"
-              value={form.confirmation_password}
-              onChange={handleChange}
+              {...register('confirmation_password')}
               className="w-full px-5 py-2.5 border border-[#D3CDCD] bg-white rounded-lg"
               required
             />
-            {error && (
-              <p className="text-red-500 text-sm mt-1">{error}</p>
-            )}
-            {success && (
-              <p className="text-green-600 text-sm mt-1">{success}</p>
+            {errors.confirmation_password && (
+              <p className="text-red-500 text-sm mt-1">{errors.confirmation_password.message}</p>
             )}
             <button
               type="submit"
+              disabled={isSubmitting}
               className="w-full hover:bg-[#2d472c] text-[20px] cursor-pointer bg-[#2C473A] text-white py-3 rounded-lg font-semibold"
             >
-              Reset Password
+              {isSubmitting ? 'Resetting...' : 'Reset Password'}
             </button>
           </form>
         </div>

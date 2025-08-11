@@ -70,16 +70,33 @@ const Authentication = () => {
 
   // Forgot Password
   const forgotPassword = async (data) => {
-    const res = await axiosClient.post('/forgot-password', data);
-    console.log('Forgot Password:', res.data);
-    return res.data;
+    try {
+      const res = await axiosClient.post('/forgot-password', data);
+      console.log('Forgot Password:', res.data);
+      router("/reset-password");
+      return Promise.resolve("Forgot password email sent successfully");
+    } catch (error) {
+      const resError = error.response?.data;
+      const errorMessage = resError?.data;
+      console.error(error);
+      return Promise.reject(errorMessage || "Failed to send forgot password email");
+    }
+    
   }
 
   // Reset Password
   const resetPassword = async (data) => {
-    const res = await axiosClient.post('/reset-password', data);
-    console.log('Reset Password:', res.data);
-    return res.data;
+    try {
+      const res = await axiosClient.post('/reset-password', data);
+      console.log('Reset Password:', res.data);
+      router("/login");
+      return Promise.resolve("Password reset successfully");
+    } catch (error) {
+      const resError = error.response?.data;
+      const errorMessage = resError?.data;
+      console.error(error);
+      return Promise.reject(errorMessage || "Failed to reset password");
+    }
   }
 
 
