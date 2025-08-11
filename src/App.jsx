@@ -41,6 +41,7 @@ const SubmitPage = lazy(() => import("./Pages/SubmitPage"));
 const RegisterPage = lazy(() => import("./Pages/RegisterPage"));
 const ForgotPasswordPage = lazy(() => import("./Pages/ForgotPasswordPage"));
 const ResetPasswordPage = lazy(() => import("./Pages/ResetPasswordPage"));
+// const ProgrammePage = lazy(() => import("./Pages/Programme"));
 
 // ScrollToTop component
 function ScrollToTop() {
@@ -79,6 +80,7 @@ function App() {
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/add-program" element={<AddProgramPage />} />
+              {/* <Route path="/programme" element={<ProgrammePage />} /> */}
               <Route path="/enroll" element={<FormPage />} />
               <Route path="/career" element={<CareerPage />} />
               <Route path="/gallery" element={<GalleryPage />} />

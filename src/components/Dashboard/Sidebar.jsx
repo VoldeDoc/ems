@@ -1,4 +1,4 @@
-import { LogOut, Home, Users, Monitor, BarChart2, MessageSquare, Settings, NotebookTextIcon } from 'lucide-react';
+import { LogOut, Home, Users, Monitor, BarChart2, MessageSquare, Settings, NotebookTextIcon, SquareDashedBottom } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../assets/Group.svg';
 import { useSidebar } from '../../context/SidebarContext';
@@ -33,6 +33,7 @@ const Sidebar = () => {
     { icon: <Home />, path: '/dashboard', tooltip: 'Dashboard' },
     { icon: <NotebookTextIcon />, path: '/dashboard/pages', tooltip: 'Pages' },
     { icon: <Monitor />, path: '/dashboard/blog', tooltip: 'Blog' },
+    { icon: <SquareDashedBottom />, path: '/dashboard/programme', tooltip: 'Program' },
     { icon: <Users />, path: '/dashboard/users', tooltip: 'Users' },
     { icon: <BarChart2 />, path: '/dashboard/analytics', tooltip: 'Analytics' },
     { icon: <MessageSquare />, path: '/dashboard/messages', tooltip: 'Messages' },

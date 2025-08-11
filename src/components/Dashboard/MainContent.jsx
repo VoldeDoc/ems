@@ -10,7 +10,8 @@ import SettingsContent from './SettingsContent';
 import EditPage from './EditPage';
 import { Navigate } from 'react-router-dom';
 import AddProgramPage from '../../Pages/AddProgram';
-
+import Programme from "./Programme"
+import EditProgramme from "./EditProgramme"
 const MainContent = () => {
   return (
     <main className="flex-1 bg-gray-100 overflow-auto">
@@ -25,6 +26,8 @@ const MainContent = () => {
         <Route path="messages" element={<MessagesContent />} />
         <Route path="settings" element={<SettingsContent />} />
         <Route path="add-program" element={<AddProgramPage/>} />
+        <Route path="edit-program" element={<EditProgramme />} />
+        <Route path="programme" element={<Programme />} />
         <Route path="*" element={<div>Error: Page Not Found</div>} />
       </Routes>
     </main>
