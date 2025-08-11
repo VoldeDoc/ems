@@ -21,7 +21,7 @@ const Sidebar = () => {
     try {
       await logout();
       toast.success('Logged out successfully', { id: toastId });
-      navigate('/auth/signin');
+      navigate('/');
     } catch (error) {
       toast.error(error?.toString() || 'Logout failed', { id: toastId });
       console.error(error);

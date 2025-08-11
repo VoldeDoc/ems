@@ -59,11 +59,11 @@ const HeaderDashboard = () => {
       await logout();
       toast.success('Logged out successfully', { id: toastId });
       setIsProfileDropdownOpen(false);
-      navigate('/auth/signin');
+      navigate('/');
     } catch (error) {
       toast.error(error?.toString() || 'Logout failed', { id: toastId });
       setIsProfileDropdownOpen(false);
-      navigate('/auth/signin');
+      navigate('/');
     }
   };
 
