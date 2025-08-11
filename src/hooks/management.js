@@ -24,7 +24,7 @@ const PageManagement = () => {
   }
 
 
-  const createPrograms = async (data) => {
+  const CreateProgramme = async (data) => {
     try {
       setLoading(true);
       const res = await axiosAuth.post("/programs", data);
@@ -42,6 +42,7 @@ const PageManagement = () => {
 
   return {
    getPrograms,
+    CreateProgramme,
   }
 
 }

@@ -86,11 +86,19 @@ const MonitorContent = () => {
       <div className="p-4 bg-white rounded-xl shadow sm:p-6">
         <div className="flex flex-col justify-between items-start mb-4 sm:flex-row sm:items-center">
           <h2 className="text-xl font-semibold text-[#252B42] sm:text-2xl">Blog Categories</h2>
-          <button
+          {/* <button
             onClick={() => setShowAddCategoryModal(true)}
             className="mt-2 bg-[#2C473A] text-white cursor-pointer px-4 py-2 rounded-sm hover:bg-green-700 sm:mt-0"
           >
             + Add Category
+          </button> */}
+           <button
+            onClick={() => {
+              window.location.href = '/dashboard/add-program';
+            }}
+            className="mt-2 bg-[#2C473A] text-white cursor-pointer px-4 py-2 rounded-sm hover:bg-green-700 sm:mt-0"
+          >
+            + Add Programs
           </button>
         </div>
 

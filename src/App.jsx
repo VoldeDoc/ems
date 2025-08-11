@@ -29,6 +29,7 @@ const ProgramPage8 = lazy(() => import("./Pages/ProgramPage8"));
 const ProPage = lazy(() => import("./Pages/ProPage"));
 const ContactPage = lazy(() => import("./Pages/ContactPage"));
 const BlogPage = lazy(() => import("./Pages/BlogPage"));
+const AddProgramPage = lazy(() => import("./Pages/AddProgram"));
 const DashboardPage = lazy(() => import("./Pages/DashboardPage"));
 const FormPage = lazy(() => import("./Pages/FormPage"));
 const CareerPage = lazy(() => import("./Pages/CareerPage"));
@@ -77,6 +78,7 @@ function App() {
               <Route path="/programs" element={<ProPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/blog" element={<BlogPage />} />
+              <Route path="/add-program" element={<AddProgramPage />} />
               <Route path="/enroll" element={<FormPage />} />
               <Route path="/career" element={<CareerPage />} />
               <Route path="/gallery" element={<GalleryPage />} />
