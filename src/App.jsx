@@ -28,7 +28,7 @@ const ProgramPage7 = lazy(() => import("./Pages/ProgramPage7"));
 const ProgramPage8 = lazy(() => import("./Pages/ProgramPage8"));
 const ProPage = lazy(() => import("./Pages/ProPage"));
 const ContactPage = lazy(() => import("./Pages/ContactPage"));
-const BlogPage = lazy(() => import("./Pages/BlogPosage"));
+const BlogPage = lazy(() => import("./Pages/BlogPage"));
 const DashboardPage = lazy(() => import("./Pages/DashboardPage"));
 const FormPage = lazy(() => import("./Pages/FormPage"));
 const CareerPage = lazy(() => import("./Pages/CareerPage"));
